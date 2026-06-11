@@ -1,0 +1,6 @@
+{
+  "name": "World Factbook",
+  "description": "An interactive, intelligence-grade world factbook exploring all countries with dynamic AI dossiers, side-by-side regional comparisons, active facts quizzes, and personalized bookmarks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
