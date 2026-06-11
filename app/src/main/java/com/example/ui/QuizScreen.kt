@@ -180,7 +180,7 @@ fun QuizScreen(
                         modifier = Modifier.fillMaxWidth().testTag("agent_performance_card"),
                         colors = CardDefaults.cardColors(containerColor = IntelSurfaceVariant),
                         shape = RoundedCornerShape(16.dp),
-                        border = BorderStroke(2.dp, IntelOnSurface)
+                        border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                     ) {
                         Row(
                             modifier = Modifier
@@ -297,7 +297,7 @@ fun QuizScreen(
                         modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(containerColor = IntelSurface),
                         shape = RoundedCornerShape(16.dp),
-                        border = BorderStroke(1.dp, IntelOnSurface)
+                        border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             val itemsToShow = if (isShowingLeaderboard) {
@@ -639,7 +639,7 @@ fun QuizModeCard(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = IntelSurface),
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(2.dp, IntelOnSurface)
+        border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
     ) {
         Row(
             modifier = Modifier
@@ -652,7 +652,7 @@ fun QuizModeCard(
                     .size(52.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .background(tint.copy(alpha = 0.15f))
-                    .border(BorderStroke(1.5.dp, IntelOnSurface), RoundedCornerShape(12.dp)),
+                    .border(BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f)), RoundedCornerShape(12.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(imageVector = icon, contentDescription = null, tint = IntelOnSurface, modifier = Modifier.size(26.dp))
@@ -706,7 +706,7 @@ fun GameOverLayout(
             .padding(16.dp),
         colors = CardDefaults.cardColors(containerColor = IntelSurface),
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(2.dp, IntelOnSurface)
+        border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
     ) {
         Column(
             modifier = Modifier.padding(24.dp),
@@ -745,7 +745,7 @@ fun GameOverLayout(
                 modifier = Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .background(PastelPinkBg)
-                    .border(BorderStroke(1.5.dp, IntelOnSurface), RoundedCornerShape(12.dp))
+                    .border(BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.15f)), RoundedCornerShape(12.dp))
                     .padding(horizontal = 24.dp, vertical = 12.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -762,7 +762,7 @@ fun GameOverLayout(
                     modifier = Modifier
                         .clip(RoundedCornerShape(30.dp))
                         .background(IntelGoldLight)
-                        .border(BorderStroke(1.dp, IntelOnSurface), RoundedCornerShape(30.dp))
+                        .border(BorderStroke(1.dp, IntelGold.copy(alpha = 0.5f)), RoundedCornerShape(30.dp))
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text("NEW DECLASSIFIED RECORD!", fontSize = 11.sp, color = IntelOnSurface, fontWeight = FontWeight.Black)
@@ -780,7 +780,7 @@ fun GameOverLayout(
                 Button(
                     onClick = onReplay,
                     colors = ButtonDefaults.buttonColors(containerColor = IntelOnSurface, contentColor = Color.White),
-                    border = BorderStroke(1.5.dp, IntelOnSurface),
+                    border = BorderStroke(1.dp, IntelGold.copy(alpha = 0.25f)),
                     shape = RoundedCornerShape(30.dp),
                     modifier = Modifier
                         .weight(1.5f)
@@ -792,7 +792,7 @@ fun GameOverLayout(
                 Button(
                     onClick = onHome,
                     colors = ButtonDefaults.buttonColors(containerColor = IntelSurface, contentColor = IntelOnSurface),
-                    border = BorderStroke(1.5.dp, IntelOnSurface),
+                    border = BorderStroke(1.1.dp, IntelOnSurface.copy(alpha = 0.15f)),
                     shape = RoundedCornerShape(30.dp),
                     modifier = Modifier
                         .weight(1f)

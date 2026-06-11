@@ -139,7 +139,7 @@ fun CountryDetailScreen(
                     .padding(horizontal = 16.dp, vertical = 8.dp),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = IntelSurface),
-                border = BorderStroke(2.dp, IntelOnSurface)
+                border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
             ) {
                 Row(
                     modifier = Modifier
@@ -555,7 +555,7 @@ fun CountryDetailScreen(
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(16.dp),
                             colors = CardDefaults.cardColors(containerColor = PastelPinkBg),
-                            border = BorderStroke(1.5.dp, IntelOnSurface)
+                            border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text(
@@ -570,7 +570,7 @@ fun CountryDetailScreen(
                                 Button(
                                     onClick = { viewModel.loadAiDossier(country.name) },
                                     colors = ButtonDefaults.buttonColors(containerColor = IntelOnSurface, contentColor = Color.White),
-                                    border = BorderStroke(1.5.dp, IntelOnSurface),
+                                    border = BorderStroke(1.dp, IntelSecondary.copy(alpha = 0.5f)),
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .testTag("fetch_ai_dossier_btn"),
@@ -636,7 +636,7 @@ fun CountryDetailScreen(
                                                 .fillMaxWidth()
                                                 .background(IntelSurface)
                                                 .border(
-                                                    BorderStroke(1.5.dp, IntelOnSurface),
+                                                    BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f)),
                                                     shape = RoundedCornerShape(12.dp)
                                                 )
                                                 .padding(16.dp)
@@ -649,7 +649,7 @@ fun CountryDetailScreen(
                                         Card(
                                             modifier = Modifier.fillMaxWidth(),
                                             colors = CardDefaults.cardColors(containerColor = IntelAlert.copy(alpha = 0.15f)),
-                                            border = BorderStroke(1.5.dp, IntelAlert),
+                                            border = BorderStroke(1.dp, IntelAlert.copy(alpha = 0.6f)),
                                             shape = RoundedCornerShape(12.dp)
                                         ) {
                                             Row(
@@ -677,7 +677,7 @@ fun CountryDetailScreen(
                                                     .fillMaxWidth()
                                                     .background(IntelSurface)
                                                     .border(
-                                                        BorderStroke(1.5.dp, IntelOnSurface),
+                                                        BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f)),
                                                         shape = RoundedCornerShape(12.dp)
                                                     )
                                                     .padding(16.dp)
@@ -704,7 +704,7 @@ fun CountryDetailScreen(
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(16.dp),
                             colors = CardDefaults.cardColors(containerColor = IntelSurface),
-                            border = BorderStroke(1.5.dp, IntelOnSurface)
+                            border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text(
@@ -777,7 +777,7 @@ fun CountryDetailScreen(
                                         .fillMaxWidth()
                                         .height(100.dp)
                                         .testTag("analyst_notes_input")
-                                        .border(BorderStroke(1.5.dp, IntelOnSurface), RoundedCornerShape(12.dp))
+                                        .border(BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.15f)), RoundedCornerShape(12.dp))
                                         .clip(RoundedCornerShape(12.dp)),
                                     colors = TextFieldDefaults.colors(
                                         focusedContainerColor = PastelPinkBg,
@@ -797,7 +797,7 @@ fun CountryDetailScreen(
                                         focusManager.clearFocus()
                                     },
                                     colors = ButtonDefaults.buttonColors(containerColor = IntelOnSurface, contentColor = Color.White),
-                                    border = BorderStroke(1.5.dp, IntelOnSurface),
+                                    border = BorderStroke(1.dp, IntelGold.copy(alpha = 0.25f)),
                                     shape = RoundedCornerShape(30.dp),
                                     modifier = Modifier
                                         .align(Alignment.End)
@@ -887,7 +887,7 @@ fun SovereignDemographicsBalanceChart(
             .testTag("demographics_visual_chart"),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = IntelSurface),
-        border = BorderStroke(1.5.dp, IntelOnSurface)
+        border = BorderStroke(1.0.dp, IntelOnSurface.copy(alpha = 0.12f))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -1102,7 +1102,7 @@ fun TacticalMilitaryRadarChart(
             .testTag("military_radar_chart"),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = IntelSurface),
-        border = BorderStroke(1.5.dp, IntelOnSurface)
+        border = BorderStroke(1.0.dp, IntelOnSurface.copy(alpha = 0.12f))
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -1271,7 +1271,7 @@ fun TacticalMilitaryRadarChart(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .border(BorderStroke(1.5.dp, IntelOnSurface), RoundedCornerShape(12.dp))
+                    .border(BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.15f)), RoundedCornerShape(12.dp))
                     .background(PastelPinkBg)
                     .padding(12.dp),
                 verticalAlignment = Alignment.CenterVertically

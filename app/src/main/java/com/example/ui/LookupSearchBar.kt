@@ -43,7 +43,7 @@ fun LookupSearchBar(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = IntelSurface),
             shape = RoundedCornerShape(16.dp),
-            border = BorderStroke(2.dp, IntelOnSurface)
+            border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
         ) {
             Row(
                 modifier = Modifier

@@ -95,7 +95,7 @@ fun CompareScreen(
                         .testTag("selector_a_btn"),
                     colors = CardDefaults.cardColors(containerColor = IntelSurface),
                     shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(2.dp, IntelOnSurface)
+                    border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                 ) {
                     Column(
                         modifier = Modifier
@@ -144,7 +144,7 @@ fun CompareScreen(
                     .size(36.dp)
                     .clip(RoundedCornerShape(18.dp))
                     .background(PastelPinkBg)
-                    .border(BorderStroke(1.5.dp, IntelOnSurface), RoundedCornerShape(18.dp)),
+                    .border(BorderStroke(1.dp, IntelGold.copy(alpha = 0.5f)), RoundedCornerShape(18.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Text("VS", fontSize = 12.sp, fontWeight = FontWeight.Black, color = IntelOnSurface)
@@ -160,7 +160,7 @@ fun CompareScreen(
                         .testTag("selector_b_btn"),
                     colors = CardDefaults.cardColors(containerColor = IntelSurface),
                     shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(2.dp, IntelOnSurface)
+                    border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                 ) {
                     Column(
                         modifier = Modifier
@@ -224,7 +224,7 @@ fun CompareScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = IntelSurface),
                 shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(2.dp, IntelOnSurface)
+                border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     ComparisonMatrixRow(label = "Official Name", valA = countryA.officialName, valB = countryB.officialName)
@@ -304,7 +304,7 @@ fun CompareScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = IntelSurface),
                 shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(2.dp, IntelOnSurface)
+                border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp),

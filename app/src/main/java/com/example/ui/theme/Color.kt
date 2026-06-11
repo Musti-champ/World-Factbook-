@@ -10,26 +10,26 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-// World Factbook Mission Control (Bold Typography Theme)
-val IntelDarkBg = Color(0xFFFDFBFF)       // Light neutral canvas bg
-val IntelSurface = Color(0xFFFFFFFF)      // Pure white main cards
-val IntelSurfaceVariant = Color(0xFFECE6F0) // Soft lavender/gray secondary surfaces
-val IntelGold = Color(0xFF004A77)         // Deep bold main blue
-val IntelGoldLight = Color(0xFFD1E4FF)    // Light blue container paint
-val IntelOnBg = Color(0xFF334155)         // Standard body slate-700
-val IntelOnSurface = Color(0xFF0F172A)    // Extremely bold header slate-900
-val IntelSecondary = Color(0xFF00639B)    // Alternative strategic deep blue
-val IntelAlert = Color(0xFFBA1A1A)        // Accent threat/error red
-val IntelMuted = Color(0xFF64748B)        // Muted gray labels
+// World Factbook Mission Control (Premium White Light Theme)
+val IntelDarkBg = Color(0xFFF8FAFC)       // Crisp light slate-grey background canvas
+val IntelSurface = Color(0xFFFFFFFF)      // Pure white card and container surfaces
+val IntelSurfaceVariant = Color(0xFFF1F5F9) // Slate-100 light container background
+val IntelGold = Color(0xFF1E293B)         // Slate-800 for elegant premium headings & title tones
+val IntelGoldLight = Color(0xFFE2E8F0)    // Translucent slate-200 container
+val IntelOnBg = Color(0xFF475569)         // Slate-600 elegant subtitle & body caption text
+val IntelOnSurface = Color(0xFF0F172A)    // Slate-900 primary solid text for headings and posts
+val IntelSecondary = Color(0xFF0284C7)    // Sky-600 vibrant active highlights and linked buttons
+val IntelAlert = Color(0xFFEF4444)        // Vibrant standard red warning/alert indicator
+val IntelMuted = Color(0xFF94A3B8)        // Slate-400 border lines, ticks, and inactive state visual guidelines
 
-// Theme-specific pastel grid accents
-val PastelPinkBg = Color(0xFFF3E7F3)
-val PastelPinkText = Color(0xFF31111D)
-val PastelPinkIcon = Color(0xFF6B4B6E)
+// Theme-specific glass grid accents
+val PastelPinkBg = Color(0xFFFFF1F2)      // Soft warning light red background
+val PastelPinkText = Color(0xFF9F1239)    // High contrast rose pink text
+val PastelPinkIcon = Color(0xFFE11D48)    // Coral/vivid pink highlight icon
 
-val PastelGreenBg = Color(0xFFE8F0E8)
-val PastelGreenText = Color(0xFF0A200A)
-val PastelGreenIcon = Color(0xFF3D663D)
+val PastelGreenBg = Color(0xFFF0FDF4)     // Soft light green background
+val PastelGreenText = Color(0xFF166534)   // High contrast forest green text
+val PastelGreenIcon = Color(0xFF15803D)   // Soft active standard green icon
 
-val UserProfileBg = Color(0xFFEADDFF)
-val UserProfileText = Color(0xFF21005D)
+val UserProfileBg = Color(0xFFE2E8F0)
+val UserProfileText = Color(0xFF334155)

@@ -140,6 +140,12 @@ fun FavoritesScreen(
                         .weight(1f),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+                    item {
+                        AgentVaultSecurityBreakdownChart(
+                            favoritedCountries = favoritedCountries,
+                            dossierTags = dossierTags
+                        )
+                    }
                     items(favoritedCountries) { country ->
                         val dossier = bookmarks[country.name]
                         val privateNotes = dossier?.analystNotes ?: ""
@@ -152,7 +158,7 @@ fun FavoritesScreen(
                                 .testTag("favorite_card_${country.name.lowercase().replace(" ", "_")}"),
                             colors = CardDefaults.cardColors(containerColor = IntelSurface),
                             shape = RoundedCornerShape(16.dp),
-                            border = BorderStroke(2.dp, IntelOnSurface)
+                            border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Row(
@@ -232,7 +238,7 @@ fun FavoritesScreen(
                                             .clip(RoundedCornerShape(12.dp))
                                             .background(PastelPinkBg)
                                             .border(
-                                                BorderStroke(1.5.dp, IntelOnSurface),
+                                                BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.15f)),
                                                 shape = RoundedCornerShape(12.dp)
                                             )
                                             .padding(12.dp)
@@ -332,7 +338,7 @@ fun FavoritesScreen(
                                 .testTag("comparison_card_${comparison.id.lowercase()}"),
                             colors = CardDefaults.cardColors(containerColor = IntelSurface),
                             shape = RoundedCornerShape(16.dp),
-                            border = BorderStroke(2.dp, IntelOnSurface)
+                            border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.12f))
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Row(
@@ -403,7 +409,7 @@ fun FavoritesScreen(
                                             .clip(RoundedCornerShape(12.dp))
                                             .background(PastelPinkBg)
                                             .border(
-                                                BorderStroke(1.5.dp, IntelOnSurface),
+                                                BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.15f)),
                                                 shape = RoundedCornerShape(12.dp)
                                             )
                                             .padding(12.dp)
@@ -443,6 +449,203 @@ fun FavoritesScreen(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun AgentVaultSecurityBreakdownChart(
+    favoritedCountries: List<Country>,
+    dossierTags: Map<String, String>,
+    modifier: Modifier = Modifier
+) {
+    val totalCount = favoritedCountries.size
+    if (totalCount == 0) return
+
+    val counts = remember(favoritedCountries, dossierTags) {
+        val distribution = mutableMapOf(
+            "TOP SECRET" to 0,
+            "CONFIDENTIAL" to 0,
+            "RESTRICTED" to 0,
+            "UNCLASSIFIED" to 0
+        )
+        favoritedCountries.forEach { country ->
+            val tag = dossierTags[country.name] ?: "UNCLASSIFIED"
+            distribution[tag] = (distribution[tag] ?: 0) + 1
+        }
+        distribution
+    }
+
+    val topSecretCount = counts["TOP SECRET"] ?: 0
+    val confidentialCount = counts["CONFIDENTIAL"] ?: 0
+    val restrictedCount = counts["RESTRICTED"] ?: 0
+    val unclassifiedCount = counts["UNCLASSIFIED"] ?: 0
+
+    val topSecretPct = if (totalCount > 0) topSecretCount.toFloat() / totalCount else 0.01f
+    val confidentialPct = if (totalCount > 0) confidentialCount.toFloat() / totalCount else 0.01f
+    val restrictedPct = if (totalCount > 0) restrictedCount.toFloat() / totalCount else 0.01f
+    val unclassifiedPct = if (totalCount > 0) unclassifiedCount.toFloat() / totalCount else 0.01f
+
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 12.dp)
+            .testTag("vault_security_breakdown"),
+        colors = CardDefaults.cardColors(containerColor = IntelSurfaceVariant),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.dp, IntelOnSurface.copy(alpha = 0.2f))
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column {
+                    Text(
+                        text = "AGENT SECURITY CLEARANCE PORTFOLIO",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = IntelGold,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.sp
+                    )
+                    Text(
+                        text = "Vault Classification Density",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = IntelOnSurface,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null,
+                    tint = IntelGold,
+                    modifier = Modifier.size(18.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Stacked Segmented Horizontal Bar Chart
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(IntelDarkBg)
+            ) {
+                Row(modifier = Modifier.fillMaxSize()) {
+                    if (topSecretCount > 0) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .weight(topSecretPct)
+                                .background(Color(0xFFBA1A1A))
+                        )
+                    }
+                    if (confidentialCount > 0) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .weight(confidentialPct)
+                                .background(Color(0xFF0A5C22))
+                        )
+                    }
+                    if (restrictedCount > 0) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .weight(restrictedPct)
+                                .background(Color(0xFF00639B))
+                        )
+                    }
+                    if (unclassifiedCount > 0) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .weight(unclassifiedPct)
+                                .background(Color(0xFF64748B))
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Legend / Metrics section
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                ClassificationLegendItem(
+                    label = "TOP SECRET",
+                    count = topSecretCount,
+                    percentage = (topSecretPct * 100).toInt(),
+                    color = Color(0xFFBA1A1A)
+                )
+                ClassificationLegendItem(
+                    label = "CONFIDENTIAL",
+                    count = confidentialCount,
+                    percentage = (confidentialPct * 100).toInt(),
+                    color = Color(0xFF0A5C22)
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                ClassificationLegendItem(
+                    label = "RESTRICTED",
+                    count = restrictedCount,
+                    percentage = (restrictedPct * 100).toInt(),
+                    color = Color(0xFF00639B)
+                )
+                ClassificationLegendItem(
+                    label = "UNCLASSIFIED",
+                    count = unclassifiedCount,
+                    percentage = (unclassifiedPct * 100).toInt(),
+                    color = Color(0xFF64748B)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ClassificationLegendItem(
+    label: String,
+    count: Int,
+    percentage: Int,
+    color: Color,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.width(140.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(10.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(color)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Column {
+            Text(
+                text = "$label ($count)",
+                fontSize = 9.sp,
+                fontFamily = FontFamily.Monospace,
+                fontWeight = FontWeight.Bold,
+                color = IntelOnSurface
+            )
+            Text(
+                text = if (count > 0) "$percentage% of archives" else "0% of archives",
+                fontSize = 8.sp,
+                color = IntelMuted
+            )
         }
     }
 }
